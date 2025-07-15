@@ -59,7 +59,7 @@ const [selectedProduct, setSelectedProduct] = useState(null);
     fetchCategory(categoryFromURL);
       if (window.analytics && typeof window.analytics.page === 'function') {
     window.analytics.page({
-        path: window.location.pathname,
+        path: window.location.pathname + window.location.search,
       url: window.location.href,
       title: document.title
     });
