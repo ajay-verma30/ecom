@@ -7,12 +7,20 @@ import './Navigation.css'
 
 function Navigation() {
   const[email, setEmail] = useState(null);
-  useEffect(()=>{
-   const localEmail = localStorage.getItem("email");
-   if(localEmail !== null){
-    setEmail(localEmail)
-   }
-  },[])
+ useEffect(() => {
+  const updateEmail = () => {
+    const localEmail = localStorage.getItem("email");
+    setEmail(localEmail);
+  };
+
+  updateEmail();
+
+  window.addEventListener("storage", updateEmail);
+
+  return () => {
+    window.removeEventListener("storage", updateEmail);
+  };
+}, []);
 
   const handleLogout = (e)=>{
     e.preventDefault();

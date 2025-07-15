@@ -16,6 +16,7 @@ function Login() {
         e.preventDefault()
         if(email === userDetails.email && password === userDetails.password){
             localStorage.setItem("email", email)
+            window.dispatchEvent(new Event("storage"));
             navigate('/')
         }
         else{
