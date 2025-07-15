@@ -57,6 +57,12 @@ const [selectedProduct, setSelectedProduct] = useState(null);
   useEffect(() => {
     const categoryFromURL = searchParams.get('category') || 'all';
     fetchCategory(categoryFromURL);
+      if (window.analytics && typeof window.analytics.page === 'function') {
+    window.analytics.page({
+      url: window.location.href,
+      title: document.title
+    });
+  }
   }, [searchParams]);
 
   const handleViewProduct = (product) => {
