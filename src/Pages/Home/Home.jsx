@@ -81,7 +81,7 @@ const [selectedProduct, setSelectedProduct] = useState(null);
 const handleAddtoCart = (e) =>{
 e.preventDefault();
 if(window.analytics && typeof window.analytics.track === "function"){
-    window.analytics.track("Product View", {
+    window.analytics.track("Added to Cart", {
       productName: selectedProduct.title,
       price: selectedProduct.price,
       category: selectedProduct.category,
