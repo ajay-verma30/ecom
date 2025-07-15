@@ -26,7 +26,7 @@ function Navigation() {
     e.preventDefault();
     localStorage.removeItem("email");
     setEmail(null)
-    window.location.href = "/login";
+    window.location.href = "/";
   }
   return (
     <>
