@@ -18,6 +18,7 @@ function Navigation() {
     e.preventDefault();
     localStorage.removeItem("email");
     setEmail(null)
+    window.location.href = "/login";
   }
   return (
     <>
@@ -27,11 +28,11 @@ function Navigation() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className='ms-auto'>
-            {email ?(
-              <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
-            ) : (
-              <Nav.Link href="/login">Logout</Nav.Link>
-            )}
+           {email ? (
+  <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
+) : (
+  <Nav.Link href="/login">Login</Nav.Link>
+)}
             <FontAwesomeIcon icon={faCartShopping} className='cart-icon' />
           </Nav>
         </Navbar.Collapse>
