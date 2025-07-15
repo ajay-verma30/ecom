@@ -77,6 +77,18 @@ const [selectedProduct, setSelectedProduct] = useState(null);
   }
   setShowModal(true);
 };
+
+const handleAddtoCart = (e) =>{
+e.preventDefault();
+if(window.analytics && typeof window.analytics.track === "function"){
+    window.analytics.track("Product View", {
+      productName: selectedProduct.title,
+      price: selectedProduct.price,
+      category: selectedProduct.category,
+      id: selectedProduct.id
+    });
+}
+}
   return (
     <>
       <div className="sale-banner">
@@ -164,7 +176,7 @@ const [selectedProduct, setSelectedProduct] = useState(null);
           <p><strong>Category:</strong> {selectedProduct.category}</p>
           <p><strong>Description:</strong> {selectedProduct.description}</p>
           <p><strong>Price:</strong> ${selectedProduct.price}</p>
-          <Button className="btn-success">Add to Cart</Button>
+          <Button className="btn-success" onClick={handleAddtoCart}>Add to Cart</Button>
         </Col>
       </Row>
     )}
