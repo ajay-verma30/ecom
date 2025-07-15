@@ -60,14 +60,16 @@ const [selectedProduct, setSelectedProduct] = useState(null);
       if (window.analytics && typeof window.analytics.page === 'function') {
     window.analytics.page({
         path: window.location.pathname + window.location.search,
-      url: window.location.href,
-      title: document.title
+      url: window.location.href
     });
   }
   }, [searchParams]);
 
   const handleViewProduct = (product) => {
   setSelectedProduct(product);
+  window.analytics.track("Product View",{
+    productName: selectedProduct(product.title)
+  })
   setShowModal(true);
 };
   return (
