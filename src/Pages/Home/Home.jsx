@@ -67,9 +67,14 @@ const [selectedProduct, setSelectedProduct] = useState(null);
 
   const handleViewProduct = (product) => {
   setSelectedProduct(product);
-  window.analytics.track("Product View",{
-    productName: selectedProduct(product.title)
-  })
+  if (window.analytics && typeof window.analytics.track === 'function') {
+    window.analytics.track("Product View", {
+      productName: product.title,
+      price: product.price,
+      category: product.category,
+      id: product.id
+    });
+  }
   setShowModal(true);
 };
   return (
