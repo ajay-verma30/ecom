@@ -26,6 +26,11 @@ function Navigation() {
     e.preventDefault();
     localStorage.removeItem("email");
     setEmail(null)
+    if (window.analytics && typeof window.analytics.page === 'function'){
+      window.analytics.track("Logout",{
+        email: email
+      })
+    }
     window.location.href = "/";
   }
   return (
